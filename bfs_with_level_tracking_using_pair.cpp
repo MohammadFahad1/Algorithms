@@ -3,38 +3,30 @@ using namespace std;
 
 vector<int> v[1005];
 bool vis[1005];
+int level[1005];
 
-void bfs(int src, int des)
+void bfs(int src)
 {
-    queue<pair<int, int>> q;
-    q.push({src, 0});
+    queue<int> q;
+    q.push(src);
     vis[src] = true;
-    bool paisi = false;
-
+    level[src] = 0;
     while (!q.empty())
     {
-        pair<int, int> front = q.front();
+        int front = q.front();
         q.pop();
 
-        // cout << front.first << endl;
+        // cout << front << " -> " << level[front] << endl;
 
-        if (front.first == des)
-        {
-            cout << front.second << endl;
-            paisi = true;
-        }
-        for (int child : v[front.first])
+        for (int child : v[front])
         {
             if (!vis[child])
             {
-                q.push({child, front.second + 1});
+                q.push(child);
                 vis[child] = true;
+                level[child] = level[front] + 1;
             }
         }
-    }
-    if (paisi == false)
-    {
-        cout << -1 << endl;
     }
 }
 
@@ -53,10 +45,15 @@ int main()
     }
 
     memset(vis, false, sizeof(vis));
+    memset(level, -1, sizeof(level));
 
     int src;
     cin >> src;
-    bfs(src, 4);
+    bfs(src);
 
+    for (int i = 0; i < n; i++)
+    {
+        cout << i << " -> " << level[i] << endl;
+    }
     return 0;
 }
