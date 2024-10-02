@@ -1,1 +1,1 @@
-Cycle Found
+Total Cost: 12
