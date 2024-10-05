@@ -1,30 +1,53 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int n, m;
-char a[1005][1005];
-bool vis[1005][1005];
+const int N = 1e3 + 10;
+bool vis[N][N];
+int dx[4] = {0, 0, -1, 1};
+int dy[4] = {1, -1, 0, 0};
+map<pair<int, int>, pair<int, int>> par;
 
-vector<pair<int, int>> d = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
+int n, m;
+char graph[N][N];
 
 bool valid(int ci, int cj)
 {
-    if (ci < 0 || ci >= n || cj < 0 || cj >= m)
+    if (ci >= 0 && ci < n && cj >= 0 && cj < m && graph[ci][cj] != '#')
+    {
+        return true;
+    }
+    else
+    {
         return false;
-    return true;
+    }
 }
 
-void dfs(int si, int sj)
+void bfs(int si, int sj)
 {
-    cout << si << " " << sj << endl;
     vis[si][sj] = true;
-    for (int i = 0; i < 4; i++)
+    queue<pair<int, int>> q;
+    q.push({si, sj});
+
+    while (!q.empty())
     {
-        int ci = si + d[i].first;
-        int cj = sj + d[i].second;
-        if (valid(ci, cj) && vis[ci][cj] == false)
+        pair<int, int> node = q.front();
+        q.pop();
+
+        for (int i = 0; i < 4; i++)
         {
-            dfs(ci, cj);
+            int ci = node.first + dx[i];
+            int cj = node.second + dy[i];
+
+            if (valid(ci, cj) && !vis[ci][cj])
+            {
+                vis[ci][cj] = true;
+                q.push({ci, cj});
+                par[{ci, cj}] = {node.first, node.second};
+                if (graph[ci][cj] == 'D')
+                {
+                    return;
+                }
+            }
         }
     }
 }
@@ -32,20 +55,55 @@ void dfs(int si, int sj)
 int main()
 {
     cin >> n >> m;
+
+    memset(vis, false, sizeof(vis));
+
+    pair<int, int> start, end;
+
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
         {
-            cin >> a[i][j];
+            cin >> graph[i][j];
+            if (graph[i][j] == 'R')
+            {
+                start = {i, j};
+            }
+            if (graph[i][j] == 'D')
+            {
+                end = {i, j};
+            }
         }
     }
 
-    int si, sj;
-    cin >> si >> sj;
+    bfs(start.first, start.second);
 
-    memset(vis, false, sizeof(vis));
+    if (vis[end.first][end.second])
+    {
+        int xi = end.first;
+        int xj = end.second;
 
-    dfs(si, sj);
+        while (graph[xi][xj] != 'R')
+        {
+            pair<int, int> p = par[{xi, xj}];
+            xi = p.first;
+            xj = p.second;
+
+            if (graph[xi][xj] != 'R')
+            {
+                graph[xi][xj] = 'X';
+            }
+        }
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            cout << graph[i][j];
+        }
+        cout << endl;
+    }
 
     return 0;
 }
