@@ -1,64 +1,75 @@
-# Basic Data Structures in C++ 🛠️
+# Advanced Graph Algorithms & Dynamic Programming in C++ 🚀
 
-Welcome to my personal repository dedicated to implementing fundamental computer science **Data Structures** and optimizing **Algorithms** using C++. This workspace tracks my progress in understanding structural data organization, parsing traversals, analyzing time complexities, and solving algorithmic problems from platforms like LeetCode and standard curriculum challenges.
-
----
-
-## 📂 Repository Breakdown
-
-The code files are organized conceptually based on the data structure architectures and problems they solve:
-
-### 1. Linear Data Structures (Stacks, Queues & Lists)
-*   **Implementations:**
-    *   `Error_handling_in_linked_list.cpp` — Best practices for managing dynamic node pointers securely.
-    *   `Browser_History.cpp` — Double/Singly linked-list simulation mimicking web navigation flow.
-*   **LeetCode & Platform Problems:**
-    *   `20. Valid Parentheses.cpp` — Stack configuration for bracket validation matching.
-    *   `225. Implement Stack using Queues.cpp` — Simulating LIFO structures using FIFO behaviors.
-    *   `232. Implement Queue using Stacks.cpp` — Simulating FIFO structures using LIFO elements.
-    *   `844. Backspace String Compare.cpp` — Stack-based string manipulation optimization.
-    *   `Insert An Element At Its Bottom In A Given Stack.cpp` — Recursive parsing algorithms on stacks.
-
-### 2. Non-Linear Data Structures (Trees & Heaps)
-*   **Binary Trees & Traversals:**
-    *   `binary_tree_input.cpp` — Building non-linear collections dynamically from standard inputs.
-    *   `binary_tree_preorder_traversal.cpp` | `binary_tree_inorder.cpp` | `binary_tree_postorder_traversal.cpp` — Depth-First Search (DFS) variants.
-    *   `binary_tree_level_order_traversal.cpp` — Breadth-First Search (BFS) implementation using standard queues.
-*   **Binary Search Trees (BST) & Specialized Operations:**
-    *   `binary_search_tree_implementation.cpp` — Element isolation, creation, and value verification rules inside BST architectures.
-    *   `convert_array_to_bst.cpp` — Height-balancing conversion strategies from sorted data sets.
-    *   `Formula to reach the children and parent nodes in complete bst.txt` — Mathematical indexing formulas for tree architectures mapped to linear flat matrices.
-*   **Tree Metrics:**
-    *   `count_nodes_binary_tree.cpp` | `count_leaf_nodes_in_a_binary_tree.cpp` | `count_max_height_of_a_binary_tree.cpp` — Aggregation and recursive metrics on node sets.
-
-### 3. Searching, Sub-arrays & Analysis
-*   `Z_Binary_Search.cpp` — $\mathcal{O}(\log N)$ optimal searching arrays vs. `Z_Binary_Search_Problem_Solving_Using_Bruteforce.cpp` linear scaling comparisons.
-*   `Y_Range_sum_query.cpp` — Optimizing continuous indexing requests using Prefix Sum architectures.
-*   `Time_and_Space_complexity.cpp` — Code annotations highlighting Big-O evaluations.
+Welcome to my repository dedicated to advanced **Graph Theory Algorithms**, **Disjoint Set Union (DSU)** architectures, and **Dynamic Programming (DP)** strategies implemented in C++. This project catalogs implementations of classical network problems, traversal methodologies, and optimization paradigms.
 
 ---
 
-## 🚀 Getting Started
+## 📂 Repository Architecture
 
-### Compile and Execute
-You need an environment supporting a modern C++ compiler (like `g++`). 
+The workspace is systematically divided into structural graph representations, foundational traversals, and specialized algorithm directories:
 
-1. **Clone the project repository:**
+### 1. Graph Representations & Traversals
+*   `Adjacency_matrix.cpp` — $\mathcal{O}(V^2)$ spatial density grid representations.
+*   `Adjacency_list.cpp` — Dynamic vector-of-lists mapping for optimal $\mathcal{O}(V + E)$ spatial footprints.
+*   `edge_list.cpp` — Linear vector serialization of individual structural edges.
+*   `adj_list_to_matrix.cpp` — Conversion pipelines transforming structural graph schemas.
+*   `bfs_traversal.cpp` & `bfs_traversal_with_level_tracking.cpp` — Queue-driven Breadth-First Searches for shortest-path routing in unweighted networks.
+*   `path_printing.cpp` — Backtracking traversals using parents mapping arrays to reconstruct explicit paths.
+
+### 2. Specialized Algorithm Components
+
+#### 📂 `dfs` (Depth-First Search)
+*   Recursive explorations tracking tree-edge routing, component discoveries, and back-edge calculations.
+
+#### 📂 `cycle_detection_graph_algorithm`
+*   State-tracking arrays checking loop topologies inside directed and undirected networks.
+
+#### 📂 `dijkstra`
+*   Priority-queue based greedy optimizations evaluating $\mathcal{O}(E \log V)$ single-source shortest paths on positive-weighted paths.
+
+#### 📂 `Bellman_Ford_Algorithm`
+*   Iterative edge relaxation pipelines handling negative edge weights and identifying harmful negative cycles.
+
+#### 📂 `DSU` (Disjoint Set Union)
+*   Equivalence relation clustering featuring optimized path compression and union-by-rank heuristics.
+
+#### 📂 `Dynamic_Programming`
+*   Optimal substructure breakdowns utilizing Memoization (Top-down) and Tabulation (Bottom-up) matrix mappings.
+
+### 3. Practical Applied Problem Sets
+*   **Pathing & Navigation:** `Can_Go.cpp`, `Can_Go_Again.cpp`, `Maze.cpp`, `Shortest_Distance.cpp`.
+*   **Component Analytics:** `Area_of_Component.cpp`, `Count_Apartments.cpp`, `Count_Apartments_II.cpp`.
+*   **Network Optimization (MST):** `Building.cpp`, `Emperor_Alexander.cpp`, `Cycle_of_Edges.cpp`.
+*   **Knapsack & DP Variants:** `Adventure.cpp`, `Chocolates.cpp`, `Exam_Marks.cpp`, `Make_It.cpp`.
+
+---
+
+## 🛠️ Execution Requirements
+
+A compiler natively interpreting standard `C++11` or higher is necessary (e.g., `g++`).
+
+### Local Development Pipelines
+
+1. **Clone the algorithm ecosystem:**
    ```bash
    git clone github.com
    ```
-2. **Compile your file of choice (e.g., Binary Search Tree Implementation):**
+2. **Access the execution root directory:**
    ```bash
-   g++ binary_search_tree_implementation.cpp -o bst_demo
+   cd Algorithms
    ```
-3. **Execute the workspace file:**
-   * **Windows:** `bst_demo.exe`
-   * **Linux/macOS:** `./bst_demo`
+3. **Compile your implementation file of choice (e.g., Dijkstra variant):**
+   ```bash
+   g++ dijkstra/dijkstra_implementation.cpp -o graph_demo
+   ```
+4. **Execute binaries:**
+   * **Windows:** `graph_demo.exe`
+   * **Linux/macOS:** `./graph_demo`
 
 ---
 
-## 📈 Roadmap & Core Focus
-* [x] Linear Structures (Arrays, Linked Lists, Stacks, Queues)
-* [x] Non-linear Hierarchies (Binary Trees, Binary Search Trees)
-* [ ] Priority Queues & Advanced Heaps 
-* [ ] Non-linear Graph Networks (BFS, DFS, Shortest Paths)
+## 📈 Learning Roadmap
+* [x] Structural Graph Representations & Standard BFS/DFS
+* [x] Single-Source Shortest Paths (Dijkstra / Bellman-Ford)
+* [x] Minimum Spanning Trees (Kruskal's via DSU / Prim's)
+* [x] Classic DP Paradigms (0-1 Knapsack, Unbounded Knapsack, Longest Common Subsequence)
